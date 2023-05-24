@@ -163,6 +163,8 @@ function gameOver()
 // Game won function that alerts the user the game is over because of their win
 function gameWon() 
 {
+    // Tell the user how many times they clicked on the correct cells
+    alert('You clicked on the correct cells ' + correctCells.length + ' times!');
     // The alert says "You won!"
     alert('You won!');
     // Reload the page
