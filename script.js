@@ -22,7 +22,7 @@ playButton.addEventListener('click', function()
     // Toggle grid visibility
     isGridVisible = !isGridVisible;
 
-    if (isGridVisible) 
+    if (isGridVisible)
     {
         // Generate the game grid based on the selected difficulty level
         generateGrid(difficultyLevel);
@@ -65,6 +65,15 @@ function generateGrid(difficultyLevel)
     // Define the range end
     rangeEnd = numCells;
 
+    // Generate the set of numbers using the set() function
+    const setOfNumbers = set(rangeStart, rangeEnd, numberElements);
+
+    // Create an array to store the correct cells
+    const correctCells = [];
+
+    // Print the set of numbers, only for the game coders
+    console.log(setOfNumbers);
+
     // Create rows
     for (let i = 0; i < numRows; i++) 
     {   
@@ -88,9 +97,6 @@ function generateGrid(difficultyLevel)
             // Add click event listener to each cell
             cell.addEventListener('click', function() 
             {
-                // Generate the set of numbers using the set() function
-                const setOfNumbers = set(rangeStart, rangeEnd, numberElements);
-
                 // If the number is present in the generated numbers list 
                 if (setOfNumbers.includes(parseInt(cell.innerText))) 
                 {
@@ -104,6 +110,22 @@ function generateGrid(difficultyLevel)
                      // Add 'clicked' class to the cell
                     cell.classList.toggle('clicked');
                     // The user can continue clicking on other cells.
+
+                    // Add cell to the correctCells array if not already present
+                    if (!correctCells.includes(cell)) 
+                    {
+                        correctCells.push(cell);
+                        // Check if the user has clicked all the correct cells (excluding bombs)
+
+                        // numCells - numberElements = number of correct cells
+                        // numCells = total number of cells
+                        // numberElements = number of bombs
+                        if (correctCells.length === numCells - numberElements) 
+                        {
+                            // The user has won the game
+                            gameWon();
+                        }
+                    }
                 }
                 // Print the clicked cell text to the console
                 console.log(cell.innerText);
@@ -136,6 +158,15 @@ function gameOver()
         location.reload();
     }, 
     200); // 200 milliseconds of delay, so that I can see the cell turn red, before getting the alert
+}
+
+// Game won function that alerts the user the game is over because of their win
+function gameWon() 
+{
+    // The alert says "You won!"
+    alert('You won!');
+    // Reload the page
+    location.reload();
 }
 
 
