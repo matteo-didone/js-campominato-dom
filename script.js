@@ -1,13 +1,6 @@
-// The user clicks on the button "Play"
-// That will generate a square game grid
-// Each cell has a progressive number from 1 to 100
-// There will be 10 cells for each of the 10 rows
-// When the user clicks on each cell, the clicked cell turns blue, and a message is emitted in the console with the number of the clicked cell. 
-
-// BONUS: 
-// for difficulty 1 => 100 cells, with a number ranging from 1 to 100, divided into 10 cells per 10 rows;
-// for difficulty 2 => 81 cells, with a number ranging from 1 to 81, divided into 9 cells per 9 rows;
-// for difficulty 3 => 49 cells, with a number ranging from 1 to 49, divided into 7 cells per 7 rows.
+// I declare the variables that will store the values of the range start, range end and number of elements provided
+const rangeStart = 1;
+const numberElements = 16;
 
 // The play button is stored into a JS variable
 const playButton = document.getElementById('btn-play');
@@ -67,6 +60,8 @@ function generateGrid(difficultyLevel)
 
     // Calculate the number of cells per row
     const numCellsPerRow = numCells / numRows;
+    // Define the range end
+    const rangeEnd = numCells;
 
     // Create rows
     for (let i = 0; i < numRows; i++) 
@@ -93,6 +88,16 @@ function generateGrid(difficultyLevel)
             {
                 // Add 'clicked' class to the cell
                 cell.classList.toggle('clicked');
+
+                // If the number is present in the generated numbers list 
+                if (setOfNumbers.includes(parseInt(cell.innerText))) 
+                {
+                    // The cell turns red and the game ends
+                    cell.classList.add('bomb');
+                    alert('Game over!');
+                }
+                //- we have stepped on a bomb - the cell turns red and the game ends. Otherwise, the clicked cell turns blue, and the user can continue clicking on other cells.
+
                 // Print the clicked cell text to the console
                 console.log(cell.innerText);
             });
@@ -110,37 +115,7 @@ function clearGrid()
     grid.innerHTML = '';
 }
 
-// I declare the variables that will store the values provided by the user
-let rangeStart;
-let rangeEnd;
-let numberElements;
 
-// I need to make sure that:
-// 1) The values provided by the user are numbers
-// 2) The rangeStart is smaller than the rangeEnd
-// 3) The numberElements is smaller than the rangeEnd - rangeStart + 1 (because the range includes the rangeStart and the rangeEnd)
-
-// Check if the values provided by the user are numbers
-while
-(
-    isNaN(rangeStart) || 
-    isNaN(rangeEnd) || 
-    isNaN(numberElements) || 
-    rangeStart === "" || 
-    rangeEnd === "" || 
-    numberElements === "" ||
-    rangeStart === null ||
-    rangeEnd === null ||
-    numberElements === null ||
-    rangeStart > rangeEnd || 
-    (rangeEnd - rangeStart + 1) < numberElements
-)    
-{
-    // Ask the user for the range of numbers and the number of elements in the set
-    rangeStart = parseInt(prompt("What's the number from which you'd want the range to start?")); // The first number in the range
-    rangeEnd = parseInt(prompt("What's the number from which you'd want the range to end?")); // The last number in the range
-    numberElements = parseInt(prompt("How many elements would you like to have in the new array?")); // The number of elements in the set
-}
 
 // Generate a set of random numbers that are different from each other
 const setOfNumbers = set(rangeStart, rangeEnd, numberElements); // Call the function set()
