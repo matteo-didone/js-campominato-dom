@@ -124,13 +124,18 @@ function clearGrid()
     grid.innerHTML = '';
 }
 
-// Game over function
-function gameOver()
+// Game over function that alerts the user the game is over because of their loss
+function gameOver() 
 {
-    // The alert says "Game Over!"
-    alert('Game over!');
-    // Clear the grid
-    clearGrid();
+    // Delay the alert message by 2 seconds (2000 milliseconds)
+    setTimeout(function() 
+    {
+        // The alert says "Game Over!"
+        alert('Game over!');
+        // Reload the page
+        location.reload();
+    }, 
+    200); // 200 milliseconds of delay, so that I can see the cell turn red, before getting the alert
 }
 
 
