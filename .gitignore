@@ -1,0 +1,9 @@
+# Ignore node_modules and other build files
+node_modules/
+build/
+
+# Ignore .DS_Store files on macOS
+.DS_Store
+
+# Ignore Thumbs.db files on Windows
+Thumbs.db
