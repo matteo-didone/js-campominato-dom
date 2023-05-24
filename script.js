@@ -3,6 +3,9 @@ let rangeStart = 1;
 let numberElements = 16;
 let rangeEnd;
 
+// Create an array to store the correct cells
+const correctCells = [];
+
 
 // The play button is stored into a JS variable
 const playButton = document.getElementById('btn-play');
@@ -68,11 +71,11 @@ function generateGrid(difficultyLevel)
     // Generate the set of numbers using the set() function
     const setOfNumbers = set(rangeStart, rangeEnd, numberElements);
 
-    // Create an array to store the correct cells
-    const correctCells = [];
+    // Sort the set of numbers in ascending order
+    const setOfNumbersSorted = bubbleSort(setOfNumbers);
 
     // Print the set of numbers, only for the game coders
-    console.log(setOfNumbers);
+    console.log(setOfNumbersSorted);
 
     // Create rows
     for (let i = 0; i < numRows; i++) 
@@ -169,6 +172,32 @@ function gameWon()
     alert('You won!');
     // Reload the page
     location.reload();
+}
+
+// Function to sort Array in ascending order
+function bubbleSort(arrayToBeSorted)
+{
+    // Define the array length
+    const arrayLength = arrayToBeSorted.length;
+
+    // Iterate through the array
+    for (let i = 0; i < arrayLength; i++) 
+    {
+        // Iterate through the array
+        for (let j = 0; j < arrayLength; j++) 
+        {
+            // Check if the current element is greater than the next element
+            if (arrayToBeSorted[j] > arrayToBeSorted[j + 1]) 
+            {
+                // Swap the two elements
+                const temp = arrayToBeSorted[j];
+                arrayToBeSorted[j] = arrayToBeSorted[j + 1];
+                arrayToBeSorted[j + 1] = temp;
+            }
+        }
+    }
+    // Return the sorted array
+    return arrayToBeSorted;
 }
 
 
