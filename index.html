@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="it">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Campo Minato Grid</title>
+        <!-- Font Awesome 6.4.0 -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" integrity="sha512-h3sKk/x6ipBRuYXJ8V7Ku6S4T6T+fxHcIC8WSPcJvPzLPTyuFy/aXf8dn1xilJv2I2QnZGTLue5f0ZR5UE5i5Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+
+        <div class="container">
+
+            <header class="header">
+                <div class="header-left">
+                    <img src="./img/Logo.png" alt="Logo">
+                    <h1>Campo Minato</h1>
+                </div>
+
+                <div class="header-right">
+                    <button class="btn btn-primary" id="btn-play">Play</button>
+                    <select id="difficulty-selector">
+                        <option value="difficulty-1">Difficoltà 1</option>
+                        <option value="difficulty-2">Difficoltà 2</option>
+                        <option value="difficulty-3">Difficoltà 3</option>
+                    </select>                      
+                </div>
+            </header>
+
+            <div class="mined-field">
+                <div id="grid">
+
+                </div>
+            </div>
+
+            <footer class="footer">
+                <p>Made with <i class="fa-solid fa-heart"></i> by <a href="#">Boolean</a></p>
+            </footer>
+
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+
+</html>

@@ -1,0 +1,102 @@
+.container 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 
+{
+    margin-bottom: 20px;
+}
+
+ul
+{
+    list-style-type: none;
+    padding: 0;
+}
+
+.header
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.header-left
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-right
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mined-field
+{
+    background-color: aquamarine;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#btn-play
+{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#difficulty-selector
+{
+    margin-left: 20px;
+}
+
+.footer
+{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    height: 40px; 
+    margin-top: 20px;
+}
+
+#grid
+{
+    
+}
+
+.row
+{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.cell
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 65px;
+    height: 65px;
+    border: 1px solid black;    
+}
+
+.clicked
+{
+    background-color: lightblue;
+}
