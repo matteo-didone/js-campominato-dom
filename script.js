@@ -1,6 +1,8 @@
 // I declare the variables that will store the values of the range start, range end and number of elements provided
-const rangeStart = 1;
-const numberElements = 16;
+let rangeStart = 1;
+let numberElements = 16;
+let rangeEnd;
+
 
 // The play button is stored into a JS variable
 const playButton = document.getElementById('btn-play');
@@ -61,7 +63,7 @@ function generateGrid(difficultyLevel)
     // Calculate the number of cells per row
     const numCellsPerRow = numCells / numRows;
     // Define the range end
-    const rangeEnd = numCells;
+    rangeEnd = numCells;
 
     // Create rows
     for (let i = 0; i < numRows; i++) 
@@ -86,18 +88,23 @@ function generateGrid(difficultyLevel)
             // Add click event listener to each cell
             cell.addEventListener('click', function() 
             {
-                // Add 'clicked' class to the cell
-                cell.classList.toggle('clicked');
+                // Generate the set of numbers using the set() function
+                const setOfNumbers = set(rangeStart, rangeEnd, numberElements);
 
                 // If the number is present in the generated numbers list 
                 if (setOfNumbers.includes(parseInt(cell.innerText))) 
                 {
                     // The cell turns red and the game ends
                     cell.classList.add('bomb');
-                    alert('Game over!');
+                    // The game ends
+                    gameOver();
                 }
-                //- we have stepped on a bomb - the cell turns red and the game ends. Otherwise, the clicked cell turns blue, and the user can continue clicking on other cells.
-
+                else 
+                {
+                     // Add 'clicked' class to the cell
+                    cell.classList.toggle('clicked');
+                    // The user can continue clicking on other cells.
+                }
                 // Print the clicked cell text to the console
                 console.log(cell.innerText);
             });
@@ -108,6 +115,8 @@ function generateGrid(difficultyLevel)
     }
 }
 
+// The game ends When they reach the maximum number of allowed numbers (meaning they have revealed all cells that are not bombs).
+
 // Clear the grid
 function clearGrid() 
 {
@@ -115,17 +124,15 @@ function clearGrid()
     grid.innerHTML = '';
 }
 
+// Game over function
+function gameOver()
+{
+    // The alert says "Game Over!"
+    alert('Game over!');
+    // Clear the grid
+    clearGrid();
+}
 
-
-// Generate a set of random numbers that are different from each other
-const setOfNumbers = set(rangeStart, rangeEnd, numberElements); // Call the function set()
-
-// Print the random set to the console
-console.log(setOfNumbers);
-
-// Print the set to the HTML page
-const setElement = document.getElementById("set");
-setElement.innerHTML = setOfNumbers;
 
 // Function to generate a set of random numbers that are different from each other
 function set(rangeStart, rangeEnd, numberElements) 
@@ -172,4 +179,3 @@ function set(rangeStart, rangeEnd, numberElements)
     // Return the random set of numbers
     return randomSet;
 }
-
