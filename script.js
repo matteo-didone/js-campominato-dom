@@ -140,8 +140,6 @@ function generateGrid(difficultyLevel)
     }
 }
 
-// The game ends When they reach the maximum number of allowed numbers (meaning they have revealed all cells that are not bombs).
-
 // Clear the grid
 function clearGrid() 
 {
@@ -152,17 +150,14 @@ function clearGrid()
 // Game over function that alerts the user the game is over because of their loss
 function gameOver() 
 {
-    // Delay the alert message by 2 seconds (2000 milliseconds)
-    setTimeout(function() 
-    {
+    setTimeout(function() {
         // Tell the user how many times they clicked on the correct cells
         alert('You clicked on the correct cells ' + correctCells.length + ' times, but eventually you lost!');
         // The alert says "Game Over!"
         alert('Game over!');
         // Reload the page
         location.reload();
-    }, 
-    200); // 200 milliseconds of delay, so that I can see the cell turn red, before getting the alert
+    }, 200); // 200 milliseconds delay before the alert is shown to the user, so that the bomb cells turn red before the alert is shown 
 }
 
 // Game won function that alerts the user the game is over because of their win
