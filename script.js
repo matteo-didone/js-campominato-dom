@@ -155,6 +155,8 @@ function gameOver()
     // Delay the alert message by 2 seconds (2000 milliseconds)
     setTimeout(function() 
     {
+        // Tell the user how many times they clicked on the correct cells
+        alert('You clicked on the correct cells ' + correctCells.length + ' times, but eventually you lost!');
         // The alert says "Game Over!"
         alert('Game over!');
         // Reload the page
